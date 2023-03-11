@@ -29,22 +29,29 @@ def index(request):
 
 
 def registerUser(request):
+  print("CCCCCCCCCCC1")
   form=RegisterForm()
   print(request.method)
   if request.method=='POST':
+    print("CCCCCCCCCCCCCCC2")
     form=RegisterForm(request.POST)
     if form.is_valid():
+      print("CCCCCCCCCCCCCCCCCCCCCC3")
       form.save()
       # return redirect('signin')
       return render(request,'core/signin.html',{})
-  else:
-    form=RegisterForm()
+  # else:
+  #   form=RegisterForm()
   return render(request,'core/signup.html',{'form':form})
 
+
 def loginUser(request):
+  # print("CCCCCCCCCCCCCCCCC1")
   if request.method=='POST':
+    # print("CCCCCCCCCCCCCCCCC2")
     username=request.POST.get('username')
     password=request.POST.get('password')
+    # print("CCCCCCCCCCCCCCCCC3")
     # print(emailaddress,password)
     if username and password:
       user=authenticate(username=username,password=password)
@@ -74,4 +81,7 @@ def eventlistings(request):
 
 def joblisitings(request):
   return render(request,'core/joblistings.html',{})
+
+def connections(request):
+  return render(request,'core/connections.html',{})
 
