@@ -1,34 +1,15 @@
-"""stem URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import path
 from . import views
+
+appname='core'
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('settings', views.settings, name='settings'),
-    path('upload', views.upload, name='upload'),
-    path('follow', views.follow, name='follow'),
-    path('search', views.search, name='search'),
-    path('profile/<str:pk>', views.profile, name='profile'),
-    path('joblistings', views.joblistings, name='joblistings'),
-    path(path('jobboards', views.jobboards, name='jobboards'),)
-    path('signup', views.signup, name='signup'),
-    path('signin', views.signin, name='signin'),
-    path('logout', views.logout, name='logout'),
+    path('signup/', views.registerUser, name='signup'),
+    path('signin/', views.loginUser, name='signin'),
+    path('home/', views.home, name='home'),
+    path('profiles/', views.profiles, name='profiles'),
+    path('jobboards/', views.jobboards, name='jobboards'),
+    path('eventlistings/', views.eventlistings, name='eventlistings'),
+    path('joblistings/', views.joblisitings, name='joblistings'),
+    path('connections/', views.connections, name='connections'),
 ]
-
-
