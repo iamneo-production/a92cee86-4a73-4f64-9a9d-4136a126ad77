@@ -6,10 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 from itertools import chain
 import random
-# from django.http import HttpResponse
-# from django.contrib.auth.decorators import login_required
-# from itertools import chain
-# import random
+
 
 from .forms import RegisterForm
 
@@ -32,70 +29,7 @@ def index(request):
 
   else:
     return render(request, 'core/signin.html')
-    # user_object = User.objects.get(username=request.user.username)
-    # user_profile = Profile.objects.get(user=user_object)
-
-    # user_following_list = []
-    # feed = []
-
-    # user_following = FollowersCount.objects.filter(follower=request.user.username)
-
-    # for users in user_following:
-    #     user_following_list.append(users.user)
-
-    # for usernames in user_following_list:
-    #     feed_lists = Post.objects.filter(user=usernames)
-    #     feed.append(feed_lists)
-
-    # feed_list = list(chain(*feed))
-
-    # # user suggestion starts
-    # all_users = User.objects.all()
-    # user_following_all = []
-
-    # for user in user_following:
-    #     user_list = User.objects.get(username=user.user)
-    #     user_following_all.append(user_list)
     
-    # new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
-    # current_user = User.objects.filter(username=request.user.username)
-    # final_suggestions_list = [x for x in list(new_suggestions_list) if ( x not in list(current_user))]
-    # random.shuffle(final_suggestions_list)
-
-    # username_profile = []
-    # username_profile_list = []
-
-    # for users in final_suggestions_list:
-    #     username_profile.append(users.id)
-
-    # for ids in username_profile:
-    #     profile_lists = Profile.objects.filter(id_user=ids)
-    #     username_profile_list.append(profile_lists)
-
-    # suggestions_username_profile_list = list(chain(*username_profile_list))
-
-
-    # return render(request, 'signin.html', {'user_profile': user_profile, 'posts':feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
-
-# def index(request):
-#   if request.method=='POST':
-#     username=request.POST.get('username')
-#     password=request.POST.get('password')
-#     if username and password:
-#       user=authenticate(username=username,password=password)
-#       print(username,password)
-#       print(user)
-#       if user is not None:
-#         login(request,user)
-#         return redirect('home')
-#       else:
-#         messages.error(request,'Username or Password is Incorrect')
-#     else:
-#       messages.error(request,'Fill out all the fields')
-  
-#   return render(request,'core/signin.html',{})
-
-
 def loginUser(request):
   if request.method == 'POST':
     username = request.POST['username']
@@ -112,22 +46,7 @@ def loginUser(request):
 
   else:
     return render(request, 'core/signin.html')
-  # print("CCCCCCCCCCC1")
-  # form=RegisterForm()
-  # print(request.method)
-  # if request.method=='POST':
-  #   # print("CCCCCCCCCCCCCCC2")
-  #   form=RegisterForm(request.POST)
-  #   if form.is_valid():
-  #     # print("CCCCCCCCCCCCCCCCCCCCCC3")
-  #     form.save()
-  #     # return redirect('signin')
-  #     return render(request,'core/signin.html',{})
-  # # else:
-  # #   form=RegisterForm()
-  # return render(request,'core/signup.html',{'form':form})
-
-
+  
 def registerUser(request):
   if request.method == 'POST':
     username = request.POST['username']
@@ -166,26 +85,7 @@ def registerUser(request):
     return render(request, 'core/signup.html')
 
 
-  # # print("CCCCCCCCCCCCCCCCC1")
-  # if request.method=='POST':
-  #   # print("CCCCCCCCCCCCCCCCC2")
-  #   username=request.POST.get('username')
-  #   password=request.POST.get('password')
-  #   # print("CCCCCCCCCCCCCCCCC3")
-  #   # print(emailaddress,password)
-  #   if username and password:
-  #     user=authenticate(username=username,password=password)
-  #     print(username,password)
-  #     print(user)
-  #     if user is not None:
-  #       login(request,user)
-  #       return redirect('home')
-  #     else:
-  #       messages.error(request,'Username or Password is Incorrect')
-  #   else:
-  #     messages.error(request,'Fill out all the fields')
   
-  # return render(request,'core/signin.html',{})
 
 def home(request):
   return render(request,'core/homepage.html',{})
