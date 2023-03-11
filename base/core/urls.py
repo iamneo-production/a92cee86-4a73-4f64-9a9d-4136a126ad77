@@ -12,4 +12,6 @@ urlpatterns = [
     path('eventlistings/', views.eventlistings, name='eventlistings'),
     path('joblistings/', views.joblisitings, name='joblistings'),
     path('connections/', views.connections, name='connections'),
+    path('postjobs/', views.postjobs, name='postjobs'),
+    path('profile/<str:pk>', views.profile, name='profile'),
 ]
